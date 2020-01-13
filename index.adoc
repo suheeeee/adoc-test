@@ -1,0 +1,18 @@
+= Line Break Doc Title
+:hardbreaks:
+
+This journey begins one late Monday afternoon in Antwerp.
+Our team desperately needs coffee, but none of us dare open the office door.
+
+To leave means code dismemberment and certain death.
+
+
+NOTE: NOTE. 참고하고 하세요
+
+TIP: 팁입니다
+
+IMPORTANT: *중요*합니다.
+
+CAUTION: 주의 하세요
+
+WARNING: 위험합니다.
