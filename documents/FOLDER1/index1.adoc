@@ -25,6 +25,7 @@ This is another paragraph.footnote:[I am footnote text and will be displayed at 
 *** nested nested list item 1
 *** nested nested list item 2
 * list item 2
+* list item 3
 
 This is a paragraph.
 
