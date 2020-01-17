@@ -119,7 +119,7 @@ done
 
 
 
-=== reference
+== reference
 . asciidoctor : https://asciidoctor.org/
 . atom packages of asciidoctor : https://atom.io/users/asciidoctor
 . asciidoc basic grammar : https://narusas.github.io/2018/03/21/Asciidoc-basic.html
