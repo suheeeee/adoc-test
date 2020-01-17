@@ -1,0 +1,126 @@
+= Write Asciidoc with Aom
+Suhee Jeong
+1.0, 2020/01/17
+:toc:
+:icons: font
+:source-highlighter: coderay
+:hardbreaks:
+
+== Asciidoc
+image::images\Write_Asciidoc_with_Atom-4a76f.png[asciidoc source to rendered HTML]
+. *A plain-text writing format* for authoring notes, articles, documentation, books, ebooks and more.
+. *A text processor* and toolchain for translating AsciiDoc documents into various formats(called backends), including HTML, DocBook, PDF and ePub.
+
+image::images\Write_Asciidoc_with_Atom-dcd41.png[support tools for asciidoc]
+
+== Asciidoc in Atom
+[upperalpha]
+. Atom
+** Open source text editor
+** down link : https://atom.io/
+. GitHub for Atom
++
+image::images\Write_Asciidoc_with_Atom-00814.png[git for atom]
++
+** The github package brings Git and GitHub integration right inside Atom.
+** supports
++
+image::images\Write_Asciidoc_with_Atom-5145f.png[width=400, align="center"]
++
+[arabic]
+... switch or create branches
+... Fetch / Pull / Push / Force Push
+... view and checkout pull requests
++
+image::images\Write_Asciidoc_with_Atom-c7299.png[]
++
+... add and commit
++
+image::images\Write_Asciidoc_with_Atom-bec41.png[]
++
+. Atom packages for AsciiDoc
+** install packages
+*** Atom > Setting(ctrl + , ) > Install > search  `asciidoc`
++
+image::images\Write_Asciidoc_with_Atom-f596d.png[]
++
+** language-asciidoc : Adds syntax highlighting and snippets to AsciiDoc files.
++
+image::images\Write_Asciidoc_with_Atom-d2df2.png[]
++
+** asciidoc-preview : Shows the rendered HTML of the AsciiDoc content in current editor.
++
+image::images\Write_Asciidoc_with_Atom-95622.png[]
++
+** asciidoc-image-helper
+*** An Atom plugin to facilitate insertion of images in an AsciiDoc document.
+*** Create an image file, in the specified folder, that is named after the AsciiDoc file it is pasted into, and insert an image reference to that file into the editor.
++
+image::images\Write_Asciidoc_with_Atom-5de07.png[]
+
+== Create HTML and PDF files from Asciidoc
+[upperalpha]
+. asciidoctor
+A fast, open source text processor and publishing toolchain for converting AsciiDoc content to HTML 5, DocBook 5, and other formats.
+. Prerequisites
+** ruby
+*** window installer : https://rubyinstaller.org/
+. install asciidoctor
+.. Open Ruby command prompt
+.. Install asciidoctor gem : gem install asciidoctor
+.. Install asciidoctor-pdf gem : gem install --pre asciidoctor-pdf
++
+NOTE: install and download additional gem for rendering Korean
+`gem install asciidoctor-pdf-cjk-kai_gen_gothic`
+`asciidoctor-pdf-cjk-kai_gen_gothic-install`
+
+. create HTML files from asciidoc
+** usage :  asciidoctor [OPTION]... FILE...
+** example
++
+image::images\Write_Asciidoc_with_Atom-36e44.png[]
++
+image::images\Write_Asciidoc_with_Atom-3484b.png[]
++
+. create PDF files from asciidoc
+** usage :  asciidoctor-pdf [OPTION]... FILE...
+** example
++
+image::images\Write_Asciidoc_with_Atom-e8b79.png[]
++
+image::images\Write_Asciidoc_with_Atom-4f9a1.png[]
++
+. Rendering asciidoc with shell script
+** If there are many adoc files need to render, normally render them with a simple shell script.
+** example
++
+[source, shell]
+----
+asciidoctor documents\FOLDER1\index1.adoc
+asciidoctor documents\FOLDER2\INNER_FOLDER\index_inner_folder\index1.adoc
+asciidoctor documents\FOLDER2\index2.adoc
+asciidoctor documents\FOLDER3\index3.adoc
+asciidoctor documents\index.acod
+----
++
+[source, shell]
+----
+PATH_STR=$(find . -type f -name '*.adoc')
+PATH_ARR=($(echo "$PATH_STR" | tr " " "\n"))
+for DOC_PATH in "${PATH_ARR[@]}"
+do
+    PDF_PATH=$(echo $DOC_PATH | sed -e 's/documents/build\/pdf/g' | sed -e 's/.adoc/.pdf/g')
+    asciidoctor-pdf -a allow-uri-read -o $PDF_PATH $DOC_PATH
+
+    HTML_PATH=$(echo $DOC_PATH | sed -e 's/documents/build\/html/g' | sed -e 's/.adoc/.html/g')
+    asciidoctor -a allow-uri-read -o $HTML_PATH $DOC_PATH
+done
+----
+
+
+
+=== reference
+. asciidoctor : https://asciidoctor.org/
+. atom packages of asciidoctor : https://atom.io/users/asciidoctor
+. asciidoc basic grammar : https://narusas.github.io/2018/03/21/Asciidoc-basic.html
+. asciidoctor user-manual : https://asciidoctor.org/docs/user-manual/

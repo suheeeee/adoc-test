@@ -40,6 +40,7 @@
 --
 // SECTION DIV WITH ID ENDS
 
+image::images\index_inner_folder-51624.png[]
 
 // OTHER TITLES
 [float]
@@ -50,7 +51,6 @@
 
 [float]
 ==== Sub-paragraph Title [h4]
-
 
 '''
 
